@@ -1,8 +1,10 @@
 class DailyWeather
   attr_reader :summary,
                       :time,
-                      :url
+                      :url,
+                      :id 
   def initialize(day_data)
+    @id = day_data[:time]
     @time =  day_data[:time]
     @summary = day_data[:summary]
     @url = GiphyFetch.new(day_data[:summary]).get_url
