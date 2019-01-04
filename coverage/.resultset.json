@@ -206,6 +206,7 @@
       "/Users/millstone/Turing/3Module/sweater_weather/app/models/daily_weather.rb": [
         1,
         1,
+        null,
         1,
         16,
         16,
@@ -267,11 +268,34 @@
         1,
         null,
         1,
+        2,
+        0,
+        null,
+        null
+      ],
+      "/Users/millstone/Turing/3Module/sweater_weather/app/services/giphy_fetch.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
         1,
         null,
         null
       ]
     },
-    "timestamp": 1546620109
+    "timestamp": 1546621356
   }
 }

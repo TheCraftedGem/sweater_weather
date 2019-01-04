@@ -3,6 +3,7 @@ class GiphyFacade
                       :weather
                       
   def initialize(weather)
-    @summary = weather.forecast.daily_weather.map {|day| day.summary}
+    @summary = weather.forecast.daily_weather.map {|day| GiphyFetch.new(day.summary)}
+    binding.pry
   end
 end

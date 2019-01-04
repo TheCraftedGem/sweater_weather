@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-01-04T09:41:49-07:00">2019-01-04T09:41:49-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-01-04T10:02:36-07:00">2019-01-04T10:02:36-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">91.5%</span></span>
+    (<span class="covered_percent"><span class="green">91.52%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         11.48
+         10.71
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>19</b> files in total.
-    <b>153</b> relevant lines. 
-    <span class="green"><b>140</b> lines covered</span> and
-    <span class="red"><b>13</b> lines missed </span>
+    <b>20</b> files in total.
+    <b>165</b> relevant lines. 
+    <span class="green"><b>151</b> lines covered</span> and
+    <span class="red"><b>14</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -102,11 +102,11 @@
       
       <tr>
         <td class="strong"><a href="#8dff3d369e18d80646b43564c9c3e86eafdb3286" class="src_link" title="app/facades/giphy_facade.rb">app/facades/giphy_facade.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>8</td>
+        <td class="yellow strong">83.33 %</td>
+        <td>9</td>
+        <td>6</td>
         <td>5</td>
-        <td>5</td>
-        <td>0</td>
+        <td>1</td>
         <td>1.0</td>
       </tr>
       
@@ -198,6 +198,16 @@
         <td>10</td>
         <td>0</td>
         <td>1.4</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#20b37110ec824098db636842915ab96358a74170" class="src_link" title="app/services/giphy_fetch.rb">app/services/giphy_fetch.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>20</td>
+        <td>11</td>
+        <td>11</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -504,11 +514,11 @@
         <div class="source_table" id="8dff3d369e18d80646b43564c9c3e86eafdb3286">
   <div class="header">
     <h3>app/facades/giphy_facade.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="yellow">83.33 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
+      <b>6</b> relevant lines. 
       <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -545,19 +555,25 @@
           <code class="ruby">  def initialize(weather)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="6">
+          <span class="hits">2</span>
           
-          <code class="ruby">    @summary = weather.forecast.daily_weather.map {|day| day.summary}</code>
+          <code class="ruby">    @summary = weather.forecast.daily_weather.map {|day| GiphyFetch.new(day.summary)}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="missed" data-hits="0" data-linenumber="7">
+          
+          
+          <code class="ruby">    binding.pry</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -759,14 +775,14 @@
           <code class="ruby">  attr_reader :summary,</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="3">
+          
           
           <code class="ruby">                      :time</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="4">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
           
           <code class="ruby">  def initialize(day_data)</code>
         </li>
@@ -1005,8 +1021,8 @@
           <code class="ruby">    @apparent_temperature_max = day_data[:apparentTemperatureMax]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
-          
+        <li class="covered" data-hits="16" data-linenumber="44">
+          <span class="hits">16</span>
           
           <code class="ruby">    @apparent_temperature_max_time = day_data[:apparentTemperatureMaxTime]</code>
         </li>
@@ -1635,6 +1651,145 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="20b37110ec824098db636842915ab96358a74170">
+  <div class="header">
+    <h3>app/services/giphy_fetch.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>11</b> relevant lines. 
+      <span class="green"><b>11</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class GiphyFetch</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">attr_reader  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def initialize(summary)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @summary= summary.gsub(&#39; &#39;, &#39;+&#39;).gsub(&#39;.&#39;, &#39;&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  binding.pry</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def get_gifs</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    response = Faraday.get(&quot;https://api.giphy.com/v1/gifs/search?&quot;, query)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    parsed =JSON.parse(response.body, symbolize_names: true)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      binding.pry</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def query </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">    {</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">      q: @summary,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">      api_key: ENV[&#39;GIPHY_KEY&#39;]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">end</code>
