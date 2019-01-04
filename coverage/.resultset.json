@@ -50,9 +50,9 @@
         1,
         null,
         1,
-        1,
-        0,
-        0,
+        null,
+        null,
+        null,
         null,
         null,
         null
@@ -105,9 +105,7 @@
         1,
         null,
         null,
-        null,
         1,
-        2,
         2,
         2,
         2,
@@ -167,6 +165,9 @@
         1,
         1,
         1,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/millstone/Turing/3Module/sweater_weather/app/models/forecast.rb": [
@@ -185,6 +186,7 @@
         null
       ],
       "/Users/millstone/Turing/3Module/sweater_weather/app/models/current_weather.rb": [
+        1,
         1,
         1,
         2,
@@ -220,6 +222,7 @@
         null,
         null,
         1,
+        16,
         16,
         16,
         16,
@@ -328,6 +331,6 @@
         null
       ]
     },
-    "timestamp": 1546624727
+    "timestamp": 1546627199
   }
 }

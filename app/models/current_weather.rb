@@ -1,4 +1,5 @@
 class CurrentWeather 
+  attr_reader :time
   def initialize(weather)
     @time                                    =  weather[:time]
     @summary                           =  weather[:summary]

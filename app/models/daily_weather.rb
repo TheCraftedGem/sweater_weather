@@ -6,6 +6,7 @@ class DailyWeather
     @time =  day_data[:time]
     @summary = day_data[:summary]
     @url = GiphyFetch.new(day_data[:summary]).get_url
+    @copyright = "2018"
     # @icon = day_data[:icon]
     # @sunrise = day_data[:sunriseTime]
     # @sunset = day_data[:sunsetTime]
