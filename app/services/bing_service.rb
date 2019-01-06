@@ -8,10 +8,6 @@ class BingService
     JSON.parse(response.body, symbolize_names: true) [:resourceSets][0][:resources][0][:point][:coordinates]
   end
 
-  def get_weather
-    
-  end
-
   def city 
     @params.split(', ').first
   end

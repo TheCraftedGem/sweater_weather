@@ -5,7 +5,7 @@ class ForecastFacade
   end
 
   def forecast
-    Forecast.new(weather)
+   @forecast ||= Forecast.new(weather)
   end
 
   def coords
