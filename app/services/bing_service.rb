@@ -1,4 +1,4 @@
-class BingFetch
+class BingService
   def initialize(params)
     @params = params
   end

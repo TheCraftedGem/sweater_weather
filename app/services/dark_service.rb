@@ -1,4 +1,4 @@
-class DarkFetch
+class DarkService
 attr_reader  :latitude
                       :longitude
                       :get_weather

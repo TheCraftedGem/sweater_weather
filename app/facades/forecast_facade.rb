@@ -1,10 +1,18 @@
 class ForecastFacade 
-  attr_reader :bing,
-                      :weather,
-                      :forecast
+  attr_reader :location
   def initialize(location)
-    @bing        =  BingFetch.new(location)
-    @weather  =  DarkFetch.new(@bing.get_coords)
-    @forecast  =   Forecast.new(@weather.get_weather)
+    @location = location
+  end
+
+  def forecast
+    Forecast.new(weather)
+  end
+
+  def coords
+    @bing ||= BingService.new(@location).get_coords
+  end
+
+  def weather
+    @darksky ||= DarkService.new(coords).get_weather
   end
 end
