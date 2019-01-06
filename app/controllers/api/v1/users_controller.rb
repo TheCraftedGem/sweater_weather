@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
     if valid_password? && @user.save
       render json: UserKeySerializer.new(@user), status: 201
     else
-      render json: "Try Again", status: 422
+      render json: "Woops Try Again", status: 422
     end
   end
 

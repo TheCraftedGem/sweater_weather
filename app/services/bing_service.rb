@@ -4,6 +4,12 @@ class BingService
   end
 
   def get_coords
+    make_call
+  end
+
+  private 
+
+  def make_call
     response = Faraday.get("http://dev.virtualearth.net/REST/v1/Locations/", query)
     JSON.parse(response.body, symbolize_names: true) [:resourceSets][0][:resources][0][:point][:coordinates]
   end
