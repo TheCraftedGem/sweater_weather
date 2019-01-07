@@ -1,15 +1,17 @@
-class BingFetch
+class BingService
   def initialize(params)
     @params = params
   end
 
   def get_coords
-    response = Faraday.get("http://dev.virtualearth.net/REST/v1/Locations/", query)
-    JSON.parse(response.body, symbolize_names: true) [:resourceSets][0][:resources][0][:point][:coordinates]
+    make_call
   end
 
-  def get_weather
-    
+  private 
+
+  def make_call
+    response = Faraday.get("http://dev.virtualearth.net/REST/v1/Locations/", query)
+    JSON.parse(response.body, symbolize_names: true) [:resourceSets][0][:resources][0][:point][:coordinates]
   end
 
   def city 

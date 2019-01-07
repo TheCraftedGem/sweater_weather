@@ -2,12 +2,15 @@ class DailyWeather
   attr_reader :summary,
                       :time,
                       :url,
-                      :id 
+                      :id,
+                      :day_data
+            
   def initialize(day_data)
-    @id = day_data[:time]
+    @id = 1
+    @day_data = day_data
     @time =  day_data[:time]
     @summary = day_data[:summary]
-    @url = GiphyFetch.new(day_data[:summary]).get_url
+    @url = get_url
     @copyright = "2018"
     # @icon = day_data[:icon]
     # @sunrise = day_data[:sunriseTime]
@@ -47,5 +50,9 @@ class DailyWeather
     # @apparentl_temperature_min_time = day_data[:apparentTemperatureMinTime]
     # @apparent_temperature_max = day_data[:apparentTemperatureMax]
     # @apparent_temperature_max_time = day_data[:apparentTemperatureMaxTime]
+  end
+
+  def get_url 
+    GiphyService.new(@day_data[:summary]).get_url
   end
 end

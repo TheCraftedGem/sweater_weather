@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Dark Sky API request' do
 	it 'returns weather data' do
-			response = DarkFetch.new([39.7392358, -104.990251]).get_weather
+			response = DarkService.new([39.7392358, -104.990251]).get_weather
 			expect(response).to be_a Hash
 			expect(response).to have_key(:latitude)
 			expect(response).to have_key(:longitude)

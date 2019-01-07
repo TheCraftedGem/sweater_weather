@@ -1,8 +1,13 @@
-class GiphyFetch
-attr_reader  
+class GiphyService
   def initialize(summary)
     @summary= summary.gsub(' ', '+').gsub('.', '')
   end
+
+  def get_url 
+    get_gifs[:data][0][:url]
+  end
+  
+  private
 
   def get_gifs
     response = Faraday.get("https://api.giphy.com/v1/gifs/search?", query)
@@ -14,9 +19,5 @@ attr_reader
       q: @summary,
       api_key: ENV['GIPHY_KEY']
     }
-  end
-
-  def get_url 
-    get_gifs[:data][0][:url]
   end
 end
