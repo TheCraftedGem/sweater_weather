@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+      user = create(:user, email: 'whatever@example.com', password: "password" )
+      user.favorites.create(location: 'Denver, co')
+      user.favorites.create(location: 'Golden, co')
