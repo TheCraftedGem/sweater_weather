@@ -45,7 +45,6 @@ RSpec.describe 'POST /api/v1/users' do
       results = JSON.parse(response.body, symbolize_names: true)
 
       expect(results).to have_key(:data)
-      binding.pry
       expect(results[:data][:attributes]).to have_key(:favorite_locations)
       expect(results[:data][:attributes]).to have_key(:location_forecast)
     end
