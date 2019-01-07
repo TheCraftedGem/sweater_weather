@@ -88,4 +88,5 @@ RSpec.describe 'POST /api/v1/users' do
       expect(response.status).to eq(401)      
       expect(user.favorites.count).to eq(2)
     end
+    
 end
