@@ -31,4 +31,20 @@ RSpec.describe 'POST /api/v1/users' do
       expect(response.status).to eq(401)
       expect(response.body).to eq("Error")
     end
+
+    it 'returns list of favorite locations when sending api key in params' do 
+      user = create(:user, email: 'whatever@example.com', password: "password" )
+      user.favorites.create(location: 'Denver, co')
+
+      get "/api/v1/favorites?api_key=#{user.api_key}"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+
+      results = JSON.parse(response.body, symbolize_names: true)
+
+      expect(results).to have_key(:data)
+      expect(results[:data][:attributes]).to have_key(:location)
+      expect(results[:data][:attributes]).to have_key(:current_weather)
+    end
 end
