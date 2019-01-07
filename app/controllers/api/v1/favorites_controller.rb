@@ -13,7 +13,7 @@ class Api::V1::FavoritesController < ApplicationController
     if find_by_api_key
       @user = find_by_api_key
       favorite_location = UserFavorites.new(@user.favorites)
-      render json: UserFavoritesSerializer.new(favorite_location)
+      render json: UserFavoritesSerializer.new(favorite_location.current_weather)
     end
   end
 

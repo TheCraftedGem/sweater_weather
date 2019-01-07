@@ -1,20 +1,13 @@
 class LocationWeather 
+  attr_reader :id,
+                      :location
   def initialize(favorite_location)
-    @favorite_location = favorite_location
-    get_current_weather
+    @id = 1
+    @location = favorite_location.location
+    current_weather
   end
 
-  def get_current_weather
-    @current_weather ||= CurrentWeather.new(get_forecast[:currently]) 
-  end
-
-  private
-
-  def get_coords
-    @bing  ||= BingService.new(@favorite_location).get_coords
-  end
-
-  def get_forecast
-    @dark ||=  DarkService.new(get_coords).get_weather
+  def current_weather
+    @current_weather ||= ForecastFacade.new(@location).forecast.current_weather
   end
 end
