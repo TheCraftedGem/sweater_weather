@@ -14,6 +14,8 @@ class Api::V1::FavoritesController < ApplicationController
       @user = find_by_api_key
       favorite_location = UserFavorites.new(@user.favorites)
       render json: UserFavoritesSerializer.new(favorite_location.current_weather)
+    else 
+      render json: 'Error', status: 401
     end
   end
 
@@ -22,7 +24,9 @@ class Api::V1::FavoritesController < ApplicationController
       @user = find_by_api_key
       @user.favorites.destroy(@user.favorites.where(location: params[:location]))
       favorite_location = UserFavorites.new(@user.favorites)
-      render json: UserFavoritesSerializer.new(favorite_location.current_weather), 
+      render json: UserFavoritesSerializer.new(favorite_location.current_weather), status: 200
+    else
+      render json: 'Error', status: 401
     end
   end
 
