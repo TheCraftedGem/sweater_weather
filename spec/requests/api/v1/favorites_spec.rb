@@ -13,6 +13,22 @@ RSpec.describe 'POST /api/v1/users' do
     expect(results).to have_key(:data)
     expect(results[:data]).to have_key(:attributes)
     expect(results[:data][:attributes]).to have_key(:location)
-    expect(results[:data][:attributes][:location]).to eq(user.favorites)
+    expect(results[:data][:attributes][:location]).to eq(user.favorites.last.location)
   end
+
+  it 'does not save favorite with wrong api key' do
+    user = create(:user, email: 'whatever@example.com', password: "password" )
+    params = {location: "Denver, co", api_key: user.api_key}
+    post "/api/v1/favorites?location=#{@location}&api_key=potatoe"
+
+    expect(response.status).to eq(401)
+    expect(response.body).to eq("Error")
+  end
+
+    it 'does not save favorite with no api key' do
+      post "/api/v1/favorites?location=#{@location}"
+
+      expect(response.status).to eq(401)
+      expect(response.body).to eq("Error")
+    end
 end
