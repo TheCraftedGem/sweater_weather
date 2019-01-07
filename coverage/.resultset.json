@@ -12,10 +12,11 @@
         1,
         1,
         1,
+        1,
         null,
         1,
         1,
-        2,
+        1,
         null,
         null
       ],
@@ -24,16 +25,22 @@
         1,
         null
       ],
-      "/Users/millstone/Turing/3Module/sweater_weather/app/controllers/api/v1/sessions_controller.rb": [
+      "/Users/millstone/Turing/3Module/sweater_weather/app/controllers/api/v1/favorites_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
         1,
         1,
         2,
-        2,
-        1,
-        1,
-        null,
-        1,
-        null,
         null,
         null
       ],
@@ -41,10 +48,16 @@
         1,
         null
       ],
-      "/Users/millstone/Turing/3Module/sweater_weather/app/serializers/user_serializer.rb": [
+      "/Users/millstone/Turing/3Module/sweater_weather/app/models/favorite.rb": [
         1,
         1,
+        null
+      ],
+      "/Users/millstone/Turing/3Module/sweater_weather/spec/factories/favorites.rb": [
         1,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/millstone/Turing/3Module/sweater_weather/spec/factories/users.rb": [
@@ -57,6 +70,6 @@
         null
       ]
     },
-    "timestamp": 1546826173
+    "timestamp": 1546830378
   }
 }
