@@ -4,7 +4,11 @@ class GiphyService
   end
 
   def get_url 
-    get_gifs[:data][0][:url]
+    parsed_gif[:data][0][:url]
+  end
+
+  def parsed_gif
+    @parsed_gif ||= Giphy.new(get_gifs)
   end
   
   private
