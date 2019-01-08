@@ -1,7 +1,6 @@
 class Forecast 
-  attr_reader :id, 
-                      :weather_data
-                     
+  attr_reader :id, :weather_data
+
   def initialize(weather_data)
     @id = 1
     @weather_data = weather_data
@@ -19,10 +18,10 @@ class Forecast
   end 
 
   def hourly_weather
-    @hourly_weather ||= @weather_data[:hourly][:data].map {|hour| HourlyWeather.new(hour)}
+    @hourly_weather  ||= @weather_data[:hourly][:data].map {|hour| HourlyWeather.new(hour)}
   end 
 
   def daily_weather
-    @daily_weather ||=  @weather_data[:daily][:data].map { |day| DailyWeather.new(day)}
+    @daily_weather   ||= @weather_data[:daily][:data].map { |day| DailyWeather.new(day)}
   end
 end

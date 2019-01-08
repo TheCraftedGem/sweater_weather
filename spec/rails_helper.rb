@@ -10,6 +10,20 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'vcr'
+require 'webmock/rspec'
+
+VCR.configure do |config|
+  config.default_cassette_options = { record: :all }
+  config.ignore_localhost = true
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
+  config.filter_sensitive_data("<BING_API_KEY>") { ENV['BING_API_KEY'] }
+  config.filter_sensitive_data("<DARK_SKY_KEY>") { ENV['DARK_SKY_KEY'] }
+  config.filter_sensitive_data("<GIPHY_KEY>") { ENV['GIPHY_KEY'] }
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -68,8 +82,7 @@ RSpec.configure do |config|
     config.after(:each) do
     # reset all FactoryBot sequences after each test
       FactoryBot.reload
- end
-
+  end
 end
 
 
