@@ -6,11 +6,15 @@ class GiphyFacade
   end
 
   def giphy_url
-    @giphy_url ||= make_giphy.url
+    @giphy_url ||= giphy_search_response.url
   end
 
-  def make_giphy
-    Giphy.new(GiphyService.new(summary).get_gifs)
+  def giphy_search_response
+    @giphy_search_response ||= Giphy.new(giphy_search_service)
+  end
+
+  def giphy_search_service
+    @giphy_search ||= GiphyService.new(summary).search
   end
 
   def get_coords
@@ -22,10 +26,10 @@ class GiphyFacade
   end
 
   def summary 
-    @summary ||= get_weather[:currently][:summary]
+    @summary ||= ForecastFacade.new(get_coords).current_weather_summary
   end
 
   def time 
-    @time = get_weather[:currently][:time]
+    @time ||= ForecastFacade.new(get_coords).current_weather_time
   end
 end

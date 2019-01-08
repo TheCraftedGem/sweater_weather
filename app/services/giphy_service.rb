@@ -7,7 +7,7 @@ class GiphyService
     end
   end
 
-  def get_gifs
+  def search
     get_url("/v1/gifs/search?q=#{@summary}")
   end
 

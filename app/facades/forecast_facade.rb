@@ -2,6 +2,7 @@ class ForecastFacade
   attr_reader :location
   def initialize(location)
     @location = location
+    binding.pry
   end
 
   def forecast
@@ -14,5 +15,13 @@ class ForecastFacade
 
   def weather
     @darksky ||= DarkService.new(coords).get_weather
+  end
+
+  def current_weather_summary 
+    weather[:currently][:summary]
+  end
+
+  def current_weather_time 
+    weather[:currently][:time]
   end
 end
