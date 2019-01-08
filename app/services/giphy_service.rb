@@ -1,27 +1,18 @@
 class GiphyService
   def initialize(summary)
-    @summary= summary.gsub(' ', '+').gsub('.', '')
+    @summary = summary.gsub(' ', '+').gsub('.', '')
+    @conn    = Faraday.new(url: 'https://api.giphy.com') do |faraday|
+      faraday.headers["api_key"] = ENV["GIPHY_KEY"]
+      faraday.adapter  Faraday.default_adapter
+    end
   end
-
-  def get_url 
-    parsed_gif[:data][0][:url]
-  end
-
-  def parsed_gif
-    @parsed_gif ||= Giphy.new(get_gifs)
-  end
-  
-  private
 
   def get_gifs
-    response = Faraday.get("https://api.giphy.com/v1/gifs/search?", query)
-    JSON.parse(response.body, symbolize_names: true)
+    get_url("/v1/gifs/search?q=#{@summary}")
   end
 
-  def query 
-    {
-      q: @summary,
-      api_key: ENV['GIPHY_KEY']
-    }
+  def get_url(url)
+    response = @conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)[:results]
   end
 end

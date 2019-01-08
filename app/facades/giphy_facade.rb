@@ -6,7 +6,7 @@ class GiphyFacade
   end
 
   def giphy_url
-    @giphy_url ||= GiphyService.new(summary).get_url
+    @giphy_url ||= GiphyService.new(summary).get_gifs
   end
 
   def get_coords
