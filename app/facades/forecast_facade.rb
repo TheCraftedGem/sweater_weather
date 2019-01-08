@@ -2,10 +2,12 @@ class ForecastFacade
   attr_reader :location
   def initialize(location)
     @location = location
-    binding.pry
+
   end
 
   def forecast
+    # @forecast |= Forecast.build(weather)
+
     @forecast ||= Forecast.new(weather)
   end
 

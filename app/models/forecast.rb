@@ -13,6 +13,12 @@ class Forecast
     daily_weather
   end
 
+  def self.build(weather_data)
+    current_weather
+    hourly_weather
+    daily_weather
+  end
+
   def current_weather
     @current_weather ||= CurrentWeather.new(@weather_data[:currently])
   end 
