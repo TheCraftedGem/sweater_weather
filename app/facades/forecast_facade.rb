@@ -2,13 +2,10 @@ class ForecastFacade
   attr_reader :location
   def initialize(location)
     @location = location
-
   end
 
-  def forecast
-    # @forecast |= Forecast.build(weather)
-
-    @forecast ||= Forecast.new(weather)
+  def current_weather_forecast
+    @current_weather ||= Forecast.current_weather_forecast(weather)
   end
 
   def coords
@@ -19,11 +16,15 @@ class ForecastFacade
     @darksky ||= DarkService.new(coords).get_weather
   end
 
-  def current_weather_summary 
-    weather[:currently][:summary]
+  def hourly_weather
+    @hourly_weather ||= Forecast.hourly_forecast(weather)
   end
 
-  def current_weather_time 
-    weather[:currently][:time]
+  def daily_weather
+    @daily_weather ||= Forecast.daily_forecast(weather)
+  end
+
+  def daily_weather_summaries
+    daily_weather 
   end
 end

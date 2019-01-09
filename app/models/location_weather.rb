@@ -7,6 +7,6 @@ class LocationWeather
   end
 
   def current_weather
-    @current_weather ||= ForecastFacade.new(@location).forecast.current_weather
+    @current_weather ||= ForecastFacade.new(@location).current_weather_forecast
   end
 end

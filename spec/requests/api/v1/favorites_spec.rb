@@ -45,7 +45,6 @@ RSpec.describe 'POST /api/v1/users' do
       results = JSON.parse(response.body, symbolize_names: true)
 
       expect(results).to have_key(:data)
-      binding.pry
       expect(results[:data][0][:attributes]).to have_key(:current_weather)
       expect(results[:data][0][:attributes]).to have_key(:location)
     end
@@ -71,8 +70,6 @@ RSpec.describe 'POST /api/v1/users' do
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
-
-      results = JSON.parse(response.body, symbolize_names: true)
       
       expect(user.favorites.count).to eq(1)
     end
