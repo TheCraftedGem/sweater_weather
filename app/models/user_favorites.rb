@@ -8,5 +8,4 @@ class UserFavorites
   def current_weather
     @location_forecast ||= @favorite_locations.map {|location| LocationWeather.new(location)}
   end
-
 end

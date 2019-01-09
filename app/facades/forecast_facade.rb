@@ -4,8 +4,8 @@ class ForecastFacade
     @location = location
   end
 
-  def forecast
-    @forecast ||= Forecast.new(weather)
+  def current_weather_forecast
+    @current_weather ||= Forecast.current_weather_forecast(weather)
   end
 
   def coords
@@ -14,5 +14,17 @@ class ForecastFacade
 
   def weather
     @darksky ||= DarkService.new(coords).get_weather
+  end
+
+  def hourly_weather
+    @hourly_weather ||= Forecast.hourly_forecast(weather)
+  end
+
+  def daily_weather
+    @daily_weather ||= Forecast.daily_forecast(weather)
+  end
+
+  def daily_weather_summaries
+    daily_weather 
   end
 end

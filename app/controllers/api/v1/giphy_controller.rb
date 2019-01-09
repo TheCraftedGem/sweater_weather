@@ -1,6 +1,6 @@
 class Api::V1::GiphyController < ApplicationController 
   def show 
-    forecast = ForecastFacade.new(params[:location]).forecast.daily_weather
-    render json: ForecastSerializer.new(forecast)
+    forecast = GiphyFacade.new(params[:location])
+    render json: GiphySerializer.new(forecast.daily_forecast)
   end
 end

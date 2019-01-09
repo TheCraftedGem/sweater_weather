@@ -1,28 +1,20 @@
 class Forecast 
-  attr_reader :id, 
-                      :weather_data
-                     
+  attr_reader :id, :weather_data
+
   def initialize(weather_data)
     @id = 1
     @weather_data = weather_data
-    load_data
   end
 
-  def load_data 
-    current_weather
-    hourly_weather
-    daily_weather
+  def self.current_weather_forecast(weather_data)
+    @current_weather ||= CurrentWeather.new(weather_data[:currently])
   end
 
-  def current_weather
-    @current_weather ||= CurrentWeather.new(@weather_data[:currently])
-  end 
+  def self.hourly_forecast(weather_data)
+    @hourly_forecast ||= weather_data[:hourly][:data].map {|hour| HourlyWeather.new(hour)}
+  end
 
-  def hourly_weather
-    @hourly_weather ||= @weather_data[:hourly][:data].map {|hour| HourlyWeather.new(hour)}
-  end 
-
-  def daily_weather
-    @daily_weather ||=  @weather_data[:daily][:data].map { |day| DailyWeather.new(day)}
+  def self.daily_forecast(weather_data)
+    @daily_weather ||= weather_data[:daily][:data].map {|day| DailyWeather.new(day)}
   end
 end

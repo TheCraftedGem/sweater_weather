@@ -1,7 +1,7 @@
 class DarkService
   def initialize(location)
     @latitude    = location.first
-    @longitude = location.second
+    @longitude   = location.second
   end
 
   def get_weather
@@ -9,8 +9,7 @@ class DarkService
   end
 
   private
-  attr_reader :latitude,
-                      :longitude
+  attr_reader :latitude, :longitude
 
   def conn
     Faraday.new("https://api.darksky.net/forecast/")
