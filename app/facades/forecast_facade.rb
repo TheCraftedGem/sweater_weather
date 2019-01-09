@@ -23,8 +23,4 @@ class ForecastFacade
   def daily_weather
     @daily_weather ||= Forecast.daily_forecast(weather)
   end
-
-  def daily_weather_summaries
-    daily_weather 
-  end
 end
