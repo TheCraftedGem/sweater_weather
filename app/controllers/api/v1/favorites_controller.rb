@@ -1,37 +1,19 @@
 class Api::V1::FavoritesController < ApplicationController
+  before_action :validate_user
+
   def create 
-    if  find_by_api_key
-      @user = find_by_api_key
-      @user.favorites.create(location: params[:location])
-      render json: FavoritesSerializer.new(@user.favorites.last), status: 201
-    else
-      render json: 'Error', status: 401
-    end
+    current_user.favorites.create(location: params[:location])
+    render json: FavoritesSerializer.new(current_user.favorites.last), status: 201
   end
 
   def show
-    if find_by_api_key
-      @user = find_by_api_key
-      favorite_location = UserFavorites.new(@user.favorites)
-      render json: UserFavoritesSerializer.new(favorite_location.current_weather)
-    else 
-      render json: 'Error', status: 401
-    end
+    favorite_location = UserFavorites.new(current_user.favorites)
+    render json: UserFavoritesSerializer.new(favorite_location.current_weather)
   end
 
   def destroy 
-    if find_by_api_key
-      @user = find_by_api_key
-      @user.favorites.destroy(@user.favorites.where(location: params[:location]))
-      favorite_location = UserFavorites.new(@user.favorites)
-      render json: UserFavoritesSerializer.new(favorite_location.current_weather), status: 200
-    else
-      render json: 'Error', status: 401
-    end
-  end
-
-private
-  def find_by_api_key
-    User.find_by(api_key: params[:api_key])
+    current_user.favorites.destroy(current_user.favorites.where(location: params[:location]))
+    favorite_location = UserFavorites.new(current_user.favorites)
+    render json: UserFavoritesSerializer.new(favorite_location.current_weather), status: 200
   end
 end
