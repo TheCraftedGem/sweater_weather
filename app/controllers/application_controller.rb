@@ -1,4 +1,5 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
+
   def current_user
     User.find_by(api_key: params[:api_key])
   end
@@ -8,5 +9,4 @@ class ApplicationController < ActionController::Base
       render json: "Error", status: 401
     end
   end
-
 end

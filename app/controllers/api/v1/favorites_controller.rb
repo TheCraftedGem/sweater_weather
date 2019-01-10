@@ -14,6 +14,6 @@ class Api::V1::FavoritesController < ApplicationController
   def destroy 
     current_user.favorites.destroy(current_user.favorites.where(location: params[:location]))
     favorite_location = UserFavorites.new(current_user.favorites)
-    render json: UserFavoritesSerializer.new(favorite_location.current_weather), status: 200
+    # render json: UserFavoritesSerializer.new(favorite_location.current_weather), status: 200
   end
 end

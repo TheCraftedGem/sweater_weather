@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApiBaseController
+class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params) if valid_password?
     if valid_password? && @user.save
@@ -11,7 +11,6 @@ class Api::V1::UsersController < ApiBaseController
   private
 
   def user_params
-    params.permit(:accept)
     params.permit(:email, :password, :password_confirmation)
   end
 

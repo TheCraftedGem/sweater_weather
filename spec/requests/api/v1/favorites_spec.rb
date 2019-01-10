@@ -69,7 +69,7 @@ RSpec.describe 'POST /api/v1/users' do
       delete "/api/v1/favorites?location=#{params[:location]}&api_key=#{params[:api_key]}"
 
       expect(response).to be_successful
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(204)
       
       expect(user.favorites.count).to eq(1)
     end
