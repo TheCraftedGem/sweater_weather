@@ -7,6 +7,8 @@ class DailyWeather
     @id = 1
     @time =  day_data[:time]
     @summary = day_data[:summary]
+    @high = day_data[:temperatureHigh]
+    @low = day_data[:temperatureLow]
     # @url = get_url
     @copyright = "2018"
   end
