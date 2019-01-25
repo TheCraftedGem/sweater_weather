@@ -1,7 +1,9 @@
 class DailyWeather
   attr_reader :summary,
                       :time,
-                      :id
+                      :id,
+                      :high,
+                      :low
             
   def initialize(day_data)
     @id = 1
